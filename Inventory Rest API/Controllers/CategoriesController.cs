@@ -33,5 +33,24 @@ namespace Inventory_Rest_API.Controllers
             cr.Insert(cat);
             return Created("api/Categories"+cat.CategoryId,cat);
         }
+         public IHttpActionResult Put([FromUri]int id,[FromBody]Category cat)
+        {
+            cat.CategoryId = id;
+            cr.Update(cat);
+            return Ok(cat);
+        }
+         public IHttpActionResult Delete(int id)
+        {
+            
+            cr.Delete(id);
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+        [Route("api/Categories/{id}/Products")]
+        public IHttpActionResult GetProductByCategory(int id)
+        {
+            ProductRepository pr = new ProductRepository();
+            return Ok(pr.GetProductByCategory(id));
+        }
+        
     }
 }

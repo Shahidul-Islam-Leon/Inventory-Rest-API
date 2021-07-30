@@ -9,9 +9,11 @@
 
 namespace Inventory_Rest_API.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Xml.Serialization;
+
     public partial class Product
     {
         public int ProductId { get; set; }
@@ -19,6 +21,7 @@ namespace Inventory_Rest_API.Models
         public double Price { get; set; }
         public int CategoryId { get; set; }
     
+        [XmlIgnore,JsonIgnore]
         public virtual Category Category { get; set; }
     }
 }

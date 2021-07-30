@@ -13,6 +13,10 @@ namespace CodeFirstWithRepositoryPattern.Repository
         public List<Product> TopPrice(int top)
         {
             return this.GetAllData().OrderByDescending(x => x.Price).Take(top).ToList();
+        } 
+        public List<Product> GetProductByCategory(int id)
+        {
+            return this.GetAllData().Where(x=>x.CategoryId==id).ToList();
         }
 
     }
