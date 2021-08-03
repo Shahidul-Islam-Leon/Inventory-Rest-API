@@ -21,12 +21,19 @@ namespace Inventory_Rest_API.Models
         {
             this.Products = new HashSet<Product>();
         }
-    
+        List<Link> links = new List<Link>();
+
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-    
+        public List<Link> Links
+        {
+            get { return links; }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore,XmlIgnore]
-        public virtual ICollection<Product> Products { get; set; }
+        [JsonIgnore, XmlIgnore]
+       // public virtual ICollection<Product> Products { get; set; }
+        public  ICollection<Product> Products { get; set; }
+
     }
 }
